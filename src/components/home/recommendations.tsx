@@ -1,14 +1,16 @@
 "use client"
 import { supabase, supabaseTV } from "@/utils/database"
 import { PostgrestError } from "@supabase/supabase-js"
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 export default function VideoRecommendations() {
     const [end, setEnd] = useState(15)
     const [data, setData] = useState<any[] | null>(null); 
-    const [error, setError] = useState<PostgrestError>()
+    const [error, setError] = useState<any>()
     const [hasMore, setHasMore] = useState(true)
+    const [loading, setLoading] = useState<boolean>(true)
     
     async function getVideos() {
         const user = await supabase.auth.getUser();
@@ -55,6 +57,7 @@ export default function VideoRecommendations() {
             });
 
             setData(data)
+            setLoading(false)
             const updatedEnd = end
             if (data.length < updatedEnd) {
                 setHasMore(false)
@@ -63,12 +66,14 @@ export default function VideoRecommendations() {
             }
 
         } else {
-            setData(null)
+            setError('no video')
+            setLoading(false)
         }
 
         if (error) {
             setError(error)
             console.log(error)
+            setLoading(false)
         }
     }
 
@@ -80,36 +85,39 @@ export default function VideoRecommendations() {
 
 
     useEffect(() => {
+        setLoading(true)
         getVideos();
     }, [end]);
 
 
   return (
     <section>
+    {!error && !loading && (<h1 className="md:mx-44 mx-12 mt-12 mb-4 text-3xl tracking-tight md:tracking-tighter font-bold">Recommended for you</h1>)}
     <InfiniteScroll 
     dataLength={data ? data.length : 0}
     hasMore={hasMore} 
     next={loadmore}
-    loader={
-        <p className="text-center flex justify-center mx-auto text-xs">Loading...</p>
-    }
+    loader={!error ? <p className="text-center flex justify-center mx-auto text-xs">Loading...</p> : null}
     endMessage={
-    <p className="text-center flex justify-center mx-auto text-xs my-8">You reached the end</p>
+    <p className="text-center flex justify-center mx-auto text-xs mb-8">You reached the end</p>
     }>
-    <div className="justify-center lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-4 mx-12 mt-24 mb-24">
+    <div className="justify-center lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-4 md:mx-44 mx-12 mb-8">
     {data && data.map((video: any) => (
         <a key={video.id} href={`watch/${video.id}`}>
-            <div className="relative w-full h-[240px] rounded-[2rem] overflow-hidden block border border-black/10">
-                <img className="scale-y-[1.4] scale-x-[1.0] w-full h-full" src={`http://img.youtube.com/vi/${video.video_url}/0.jpg`} alt="Miniatura de un video" />
+            <div className="relative w-full h-[210px] rounded-[12px] overflow-hidden block border border-black/10">
+                <img className="scale-y-[1.4] scale-x-[1.1] w-full h-full" src={`http://img.youtube.com/vi/${video.video_url}/0.jpg`} alt="Miniature of a video" />
                 <div className="absolute inset-x-0 bottom-0 w-full h-3/4 bg-gradient-to-t from-black to-transparent"></div>
                 <p className="absolute inset-x-0 bottom-0 text-white text-lg font-bold p-4 truncate">{video.title}</p>
+                <p className="absolute inset-x-0 bottom-6 text-white text-xs p-4 truncate">{video.created_by}</p>
             </div>
 
         </a>
     ))}
-    {error && <p className="text-red-500">Error: {error.message}</p>}
     </div>
     </InfiniteScroll>
+    {error && 
+    <p className="text-3xl tracking-tight md:tracking-tighter font-bold text-center text-[#ffffffa3]">We haven't found any video for you.</p>
+    }
     </section>
   )
 }
