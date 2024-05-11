@@ -10,7 +10,7 @@ export default function SearchBar() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className='justify-center items-center flex mt-20 z-50 gap-4 mx-44'>
+        <form onSubmit={handleSubmit} className='justify-center items-center flex mt-20 z-50 gap-4 md:mx-44 mx-12'>
         <input
           type="text"
           value={searchTerm}
