@@ -8,12 +8,12 @@ export default function Categories() {
 
     return (
         <main>
-            <h1 className="md:mx-44 mx-12 mt-10 mb-4 text-3xl tracking-tight md:tracking-tighter font-bold">Browse by category</h1>
+            <h1 className="md:mx-44 mx-12 mt-12 mb-4 text-3xl tracking-tight md:tracking-tighter font-bold">Browse by category</h1>
             <div className="justify-center lg:grid-cols-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-4 md:mx-44 mx-12 mb-8">
                 {categories.map((category) => (
                     <a key={category.name} href={`/categories/${category.link}`}>
                         <div className="relative w-full h-[200px] rounded-[12px] overflow-hidden block border border-black/10 hover:saturate-150 cursor-pointer">
-                            <img className="w-full h-full" src={category.image} alt={`Image of ${category.name}`} />
+                            <img className="w-full h-full aspect-video object-center" src={category.image} alt={`Image of ${category.name}`} />
                         </div>
                     </a>
                 ))}

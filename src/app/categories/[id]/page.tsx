@@ -71,7 +71,7 @@ export default function VideoRecommendations({ params }: { params: { id: string 
     {data && data.map((video: any) => (
         <a key={video.id} href={`watch/${video.id}`}>
             <div className="relative w-full h-[40svh] rounded-[12px] overflow-hidden block border border-black/10">
-                <img className="w-full h-full" src={`http://img.youtube.com/vi/${video.video_url}/maxresdefault.jpg` || `	https://i.ytimg.com/vi/${video.video_url}/hqdefault.jpg`} alt="Miniature of a video" />
+                <img className="w-full h-full object-center" src={`http://img.youtube.com/vi/${video.video_url}/maxresdefault.jpg` || `	https://i.ytimg.com/vi/${video.video_url}/hqdefault.jpg`} alt="Miniature of a video" />
                 <div className="absolute inset-x-0 bottom-0 w-full h-3/4 bg-gradient-to-t from-black to-transparent"></div>
                 <p className="absolute inset-x-0 bottom-0 text-white text-lg font-bold p-4 truncate">{video.title}</p>
                 <p className="absolute inset-x-0 bottom-6 text-white text-xs p-4 truncate">{video.created_by}</p>
