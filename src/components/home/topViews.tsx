@@ -72,7 +72,7 @@ export default function TopViews() {
                     <div className="relative w-full h-[210px] rounded-[12px] overflow-hidden block border border-black/10">
                         <img className="scale-y-[1.4] scale-x-[1.1] w-full h-full" src={`http://img.youtube.com/vi/${video.video_url}/0.jpg`} alt="Miniatura de un video" />
                         <div className="absolute inset-x-0 bottom-0 w-full h-3/4 bg-gradient-to-t from-black to-transparent"></div>
-                        <p className="absolute inset-x-0 bottom-0 text-white text-lg font-bold p-4 truncate">{video.title}</p>
+                        <p className="absolute inset-x-0 bottom-0 text-white text-lg font-bold p-4 truncate xl:max-w-sm md:max-w-[100px]">{video.title}</p>
                         <p className="absolute right-0 -bottom-1 text-5xl font-bold p-4 text-[#ffffffa3]">{index + 1}</p>
                     </div>
                 </a>
