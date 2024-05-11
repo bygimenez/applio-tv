@@ -1,3 +1,4 @@
+import Categories from "@/components/home/categories";
 import VideoRecommendations from "@/components/home/recommendations";
 import SearchBar from "@/components/home/search";
 import TopViews from "@/components/home/topViews";
@@ -9,6 +10,7 @@ export default function Home() {
       <Logo position="top"/>
       <SearchBar />
       <TopViews />
+      <Categories />
       <VideoRecommendations />
     </main>
   );
