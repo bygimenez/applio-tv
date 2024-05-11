@@ -58,7 +58,7 @@ export default function VideoRecommendations({ params }: { params: { id: string 
     <div className='-mt-12 pt-12'>
       <Logo position='top' />
     </div>
-    {!error && !loading && (<h1 className="md:mx-44 mx-12 mt-20 mb-4 text-3xl tracking-tight md:tracking-tighter font-bold">Videos with the category <span className="capitalize">" {id} "</span>:</h1>)}
+    {!error && !loading && (<h1 className="md:mx-44 mx-12 mt-20 mb-4 text-3xl tracking-tight md:tracking-tighter font-bold">Videos with the category <span className="capitalize">&quot; {id} &quot;</span>:</h1>)}
     <InfiniteScroll 
     dataLength={data ? data.length : 0}
     hasMore={hasMore} 
