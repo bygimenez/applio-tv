@@ -12,7 +12,7 @@ export default function Upload() {
     const [sending, setSending] = useState<boolean>(false)
 
     function getVideoId(video_url: string) {
-        const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|(?:youtu\.be\/|youtube\.com\/)([a-zA-Z0-9_-]{11}))/; 
+        const regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = video_url.match(regex);
     
         if (match) {
@@ -21,6 +21,9 @@ export default function Upload() {
         } else {
             setVideoId("");
             setNext(false);
+        }
+        if (match === undefined) {
+            setNext(false)
         }
     }
 
@@ -49,20 +52,22 @@ export default function Upload() {
     async function send() {
         setSending(true)
         const auth_id = await supabase.auth.getUser()
-        const user = await supabase.from("profiles").select("full_name").eq("auth_id", auth_id.data.user?.id).single()
-        if (user.data) {
-            const { data, error } = await supabaseTV
-            .from('videos')
-            .upsert({ created_by: user.data.full_name, video_url: videoId, title: title, styles: videoStyles })
-            .select()
-            .single()
+        if (auth_id){
+            const user = await supabase.from("profiles").select("full_name").eq("auth_id", auth_id.data.user?.id).single()
+            if (user.data) {
+                const { data, error } = await supabaseTV
+                .from('videos')
+                .upsert({ created_by: user.data.full_name, video_url: videoId, title: title, styles: videoStyles })
+                .select()
+                .single()
 
-            if (data) {
-                console.log(data)
-                window.location.href = `watch/${data.id}`
-            }
-            if (error) {
-                console.log(error)
+                if (data) {
+                    console.log(data)
+                    window.location.href = `watch/${data.id}`
+                }
+                if (error) {
+                    console.log(error)
+                }
             }
         }
 
