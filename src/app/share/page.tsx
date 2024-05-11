@@ -22,7 +22,7 @@ export default function Search() {
       const { data, error } = await supabaseTV
         .from('videos')
         .select('*')
-        .textSearch('title', term);
+        .ilike('title', term);
 
       if (error) {
         throw error;
@@ -39,7 +39,7 @@ export default function Search() {
   return (
     <div>
     <Logo position='bottom' />
-      <h1 className='md:mx-44 mx-12 mt-12 mb-4 md:text-3xl text-2xl tracking-tight md:tracking-tighter font-bold'>Search results for <span className='tracking-medium'>"{searchTerm}"</span>:</h1>
+      <h1 className='md:mx-44 mx-12 mt-12 mb-4 md:text-3xl text-2xl tracking-tight md:tracking-tighter font-bold'>Search results for <span className='tracking-medium'>&quot;{searchTerm}&quot;</span>:</h1>
       <div className='grid grid-cols-1 mb-16 md:mx-44 mx-12 gap-4'>
         {results.map((video, index) => (
             <a key={video.id} href={`watch/${video.id}`}>
