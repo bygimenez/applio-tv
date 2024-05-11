@@ -94,10 +94,10 @@ export default function Upload() {
                     <p className="md:font-medium md:text-xl text-xs">For copyright reasons you must upload the video to <a className="underline text-blue-400" href="https://www.youtube.com" target="_blank" rel="notarget">youtube</a>, then copy the URL and paste it here.</p>
                     </div>
                     <div className="md:bg-white/10 w-full md:h-[40svh] h-[30svh] rounded-xl md:px-36 md:py-8">
-                        <input placeholder="" onChange={(e) => getVideoId(e.target.value)} autoFocus className="bg-white/10 backdrop-blur-3xl rounded-xl justify-center items-center mx-auto flex w-full h-full text-xl text-center focus:outline-none focus:border-white/10 focus:border resize-none p-2" type="url" ></input>
+                        <input placeholder="" onChange={(e) => getVideoId(e.target.value)} autoFocus className="bg-white/10 backdrop-blur-3xl rounded-xl justify-center items-center mx-auto flex w-full h-full text-xl text-center focus:outline-none focus:border-white/10 focus:border resize-none p-2 flex-wrap" type="url" ></input>
                     </div>
                     {next && (
-                    <button onClick={nextPage} className="mt-12 bg-white rounded-xl w-52 h-12 flex justify-center items-center mx-auto text-black text-xl font-medium">Next</button>
+                    <button onClick={nextPage} className="md:mt-12 mb-36 bg-white rounded-xl md:w-52 w-full h-12 flex justify-center items-center mx-auto text-black text-xl font-medium">Next</button>
                     )}
                 </div>
             </div>
