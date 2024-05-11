@@ -116,7 +116,7 @@ export default function VideoRecommendations() {
     </div>
     </InfiniteScroll>
     {error && 
-    <p className="text-3xl tracking-tight md:tracking-tighter font-bold text-center text-[#ffffffa3]">We haven't found any video for you.</p>
+    <p className="text-3xl tracking-tight md:tracking-tighter font-bold text-center text-[#ffffffa3]">We haven&apos;t found any video for you.</p>
     }
     </section>
   )
