@@ -17,5 +17,16 @@
       "report_bug": "Report a bug",
       "logout": "Logout",
       "loading": "Loading..."
+    },
+    "login": {
+      "title": "Login at",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "forgot_password": "Forgot your password?",
+      "more_help": "Need more help?",
+      "privacy_policy": "What do we do with your data?",
+      "continue_with": "or continue with",
+      "email_placeholder": "Email",
+      "password_placeholder": "Password"
     }
   }

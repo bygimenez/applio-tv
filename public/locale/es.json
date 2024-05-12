@@ -17,5 +17,16 @@
       "report_bug": "Reportar un error",
       "logout": "Salir",
       "loading": "Cargando..."
+    },
+    "login": {
+      "title": "Inicia sesión en",
+      "sign_in": "Iniciar sesión",
+      "sign_up": "Registrarse",
+      "forgot_password": "¿Has olvidado tu contraseña?",
+      "more_help": "¿Necesitas ayuda?",
+      "privacy_policy": "¿Que hacemos con tus datos?",
+      "continue_with": "o continua con",
+      "email_placeholder": "Correo electrónico",
+      "password_placeholder": "Contraseña"
     }
   }
