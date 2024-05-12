@@ -2,7 +2,6 @@ import { useLocale } from "next-intl";
 
 export default function HomeWithOutLogin() {
     const locale = useLocale()
-    console.log(locale)
     return (
         <main className="py-4 px-6 w-full h-full gap-6 flex-col flex">
             <section className="bg-white/10 w-full md:h-[97vh] h-fit rounded-xl flex max-md:flex-col">
