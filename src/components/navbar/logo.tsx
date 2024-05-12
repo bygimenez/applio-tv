@@ -19,7 +19,7 @@ export default function Logo({ position }: { position: string }) {
       }
       if (data.session === null) {
         console.log(data)
-        window.location.href = `${locale}/login`
+        window.location.href = `${locale}/home`
         
       } else {
         const user = await supabase.from("profiles").select("*").eq("auth_id", data.session.user.id).single();

@@ -56,7 +56,7 @@ export default function AuthUI(){
 
     return (
       <main>
-      <div className="flex items-center justify-center p-6 h-[80svh]">
+      <div className="flex items-center justify-center p-6 md:h-[80svh] h-full max-md:pb-24">
         <div className="grid gap-4 md:grid-cols-2 max-md:rounded-t-xl max-md:mt-12 z-[2] absolute border border-white/10 top-[49%] left-[50%] max-h-full h-full md:h-auto md:max-h-[70vh] w-full md:w-[90vw] md:max-w-[100vh] translate-x-[-50%] translate-y-[-50%] md:rounded-xl bg-white/10 backdrop-blur-3xl p-[25px] focus:outline-none ">
           <div className="md:max-w-md min-h-full">
             <h1 className="text-4xl font-medium tracking-lighter mt-0.5 mb-2">{t("title")} Applio TV</h1>
