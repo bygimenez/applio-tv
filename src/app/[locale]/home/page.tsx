@@ -1,4 +1,8 @@
+import { useLocale } from "next-intl";
+
 export default function HomeWithOutLogin() {
+    const locale = useLocale()
+    console.log(locale)
     return (
         <main className="py-4 px-6 w-full h-full gap-6 flex-col flex">
             <section className="bg-white/10 w-full md:h-[97vh] h-fit rounded-xl flex max-md:flex-col">
@@ -22,7 +26,7 @@ export default function HomeWithOutLogin() {
                     </div>
                 </div>
                 <div className="md:absolute bottom-4 md:right-0 md:w-[80svh] p-8 flex flex-col gap-4 mr-6">
-                    <a href={``} className="hover:bg-white/30 cursor-pointer bg-white/10 w-full text-center rounded-lg py-3">Login</a>
+                    <a href={`/${locale}/login`} className="hover:bg-white/30 cursor-pointer bg-white/10 w-full text-center rounded-lg py-3">Login</a>
                     <a className="hover:underline hover:bg-white/30 cursor-pointer bg-white/10 w-full text-center rounded-lg py-2">Read more</a>
 
                 </div>
