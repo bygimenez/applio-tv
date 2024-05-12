@@ -3,6 +3,7 @@ import Logo from "@/components/navbar/logo"
 import { supabase, supabaseTV } from "@/utils/database"
 import { PostgrestError } from "@supabase/supabase-js"
 import { motion } from "framer-motion"
+import { useLocale } from "next-intl"
 import { useEffect, useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
@@ -14,6 +15,7 @@ export default function VideoRecommendations({ params }: { params: { id: string 
     const [error, setError] = useState<any>()
     const [hasMore, setHasMore] = useState(true)
     const [loading, setLoading] = useState<boolean>(true)
+    const locale = useLocale();
     
     async function getVideos() {
         const {data, error} = await supabaseTV.from("videos").select("*").contains("styles", [`${idCapitalized}`]).range(0, end);
@@ -69,7 +71,7 @@ export default function VideoRecommendations({ params }: { params: { id: string 
     }>
     <div className="justify-center lg:grid-cols-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 grid gap-4 md:mx-44 mx-12 mb-8 mt-4">
     {data && data.map((video: any) => (
-        <a key={video.id} href={`watch/${video.id}`}>
+        <a key={video.id} href={`${locale}/watch/${video.id}`}>
             <div className="relative w-full h-[40svh] rounded-[12px] overflow-hidden block border border-black/10">
                 <img className="w-full h-full object-center" src={`http://img.youtube.com/vi/${video.video_url}/maxresdefault.jpg` || `	https://i.ytimg.com/vi/${video.video_url}/hqdefault.jpg`} alt="Miniature of a video" />
                 <div className="absolute inset-x-0 bottom-0 w-full h-3/4 bg-gradient-to-t from-black to-transparent"></div>

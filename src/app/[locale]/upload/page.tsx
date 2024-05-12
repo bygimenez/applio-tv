@@ -1,6 +1,7 @@
 "use client"
 import Logo from "@/components/navbar/logo";
 import { supabase, supabaseTV } from "@/utils/database";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 export default function Upload() {
@@ -10,6 +11,7 @@ export default function Upload() {
     const [next, setNext] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
     const [sending, setSending] = useState<boolean>(false)
+    const locale = useLocale();
 
     function getVideoId(video_url: string) {
         const regex = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -63,7 +65,7 @@ export default function Upload() {
 
                 if (data) {
                     console.log(data)
-                    window.location.href = `watch/${data.id}`
+                    window.location.href = `${locale}/watch/${data.id}`
                 }
                 if (error) {
                     console.log(error)
