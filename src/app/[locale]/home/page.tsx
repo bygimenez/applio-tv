@@ -24,7 +24,7 @@ export default function HomeWithOutLogin() {
                         <h1 className="text-3xl md:text-7xl font-bold tracking-tight text-white md:text-right text-center md:max-w-[1400px]">Share your <span className="underline decoration-3 underline-offset-4">AI</span> created videos all over the world</h1>
                     </div>
                 </div>
-                <div className="md:absolute bottom-12 md:right-0 md:w-1/4 p-8 flex flex-col gap-4 mr-6">
+                <div className="md:absolute bottom-12 md:right-0 md:w-1/4 p-8 flex flex-col gap-4 md:mr-6">
                     <a href={`/${locale}/login`} className="hover:bg-white/30 cursor-pointer bg-white/10 w-full text-center rounded-lg py-3">Login</a>
                     <a className="hover:underline hover:bg-white/30 cursor-pointer bg-white/10 w-full text-center rounded-lg py-2">Read more</a>
 
