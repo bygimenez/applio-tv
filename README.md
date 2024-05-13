@@ -1,2 +1,2 @@
 # tv.applio.org
-### Outdated please see [Applio TV official repository](https://github.com/iahispano/applio-website/apps/tv.applio.org).
+### Outdated please see [Applio TV official repository](https://github.com/IAHispano/Applio-Website/tree/main/apps/tv.applio.org).
